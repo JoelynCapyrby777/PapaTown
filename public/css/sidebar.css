@@ -1,0 +1,44 @@
+/* El contenedor principal del sidebar */
+.sidebar-container {
+    width: 280px;
+    min-height: 100vh; 
+    background-color: #274f41; /* Tu verde bosque */
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    padding: 1rem;
+}
+
+/* Estilo para los enlaces de navegación */
+.sidebar-link {
+    color: #e8f5e9; 
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    display: flex;
+    align-items: center;
+    transition: all 0.2s ease; 
+}
+
+.sidebar-link:hover {
+    background-color: rgba(255, 255, 255, 0.15); /* Aumenté un poco el brillo */
+    color: #ffffff;
+    transform: translateX(5px);
+}
+
+.sidebar-link.active {
+    background-color: #438a71; /* Un verde más claro que el fondo, combina perfecto */
+    color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2); /* Una sombrita sutil */
+}
+
+.sidebar-heading {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: #a3cfbb;
+    font-weight: bold;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    padding-left: 1rem;
+}
