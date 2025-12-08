@@ -53,12 +53,6 @@
                                             </button>
                                         </td>
                                     </tr>
-
-                                    {{-- AQUÍ ESTÁ EL TRUCO: --}}
-                                    {{-- Incluimos los modales DENTRO del bucle para que se creen 
-                                         tantas veces como papas haya, cada uno con sus datos. --}}
-                                    
-                                    {{-- Pasamos la variable $papa al include --}}
                                     @include('components.modals.actualizar_papa', ['papa' => $papa])
                                     @include('components.modals.eliminar_papa', ['papa' => $papa])
 
@@ -74,8 +68,6 @@
             </div>
         </div>
     </div>
-
-    {{-- El modal de CREAR sí va afuera, porque es uno solo para todos --}}
     @include('components.modals.crear_papa')
 
 @endsection

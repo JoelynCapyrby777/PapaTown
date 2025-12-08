@@ -9,24 +9,25 @@
             <form action="{{ route('crud.view.update', $papa['id']) }}" method="POST">
                 @csrf
                 @method('PUT') <div class="modal-body">
-                    
+
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label class="form-label">Nombre Común</label>
-                            <input type="text" class="form-control" name="nombre_comun" 
-                                   value="{{ $papa['nombre_comun'] }}" required>
+                            <input type="text" class="form-control" name="nombre_comun"
+                                value="{{ $papa['nombre_comun'] }}" required>
                         </div>
                         <div class="col-md-6">
                             <label class="form-label">Nombre Científico</label>
-                            <input type="text" class="form-control" name="nombre_cientifico" 
-                                   value="{{ $papa['nombre_cientifico'] }}" required>
+                            <input type="text" class="form-control" name="nombre_cientifico"
+                                value="{{ $papa['nombre_cientifico'] }}" required>
                         </div>
                     </div>
 
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label class="form-label">Origen</label>
-                            <input type="text" class="form-control" name="origen" value="{{ $papa['origen'] }}" required>
+                            <input type="text" class="form-control" name="origen" value="{{ $papa['origen'] }}"
+                                required>
                         </div>
                         <div class="col-md-6">
                             <label class="form-label">Forma</label>
@@ -37,11 +38,13 @@
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label class="form-label">Color Piel</label>
-                            <input type="text" class="form-control" name="color_piel" value="{{ $papa['color_piel'] }}" required>
+                            <input type="text" class="form-control" name="color_piel" value="{{ $papa['color_piel'] }}"
+                                required>
                         </div>
                         <div class="col-md-6">
                             <label class="form-label">Color Pulpa</label>
-                            <input type="text" class="form-control" name="color_pulpa" value="{{ $papa['color_pulpa'] }}" required>
+                            <input type="text" class="form-control" name="color_pulpa"
+                                value="{{ $papa['color_pulpa'] }}" required>
                         </div>
                     </div>
 
@@ -52,6 +55,6 @@
                     <button type="submit" class="btn btn-warning">Guardar Cambios</button>
                 </div>
             </form>
-            </div>
+        </div>
     </div>
 </div>
