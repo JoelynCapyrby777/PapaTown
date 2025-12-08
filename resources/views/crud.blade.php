@@ -8,11 +8,10 @@
 
         <div class="card shadow-sm">
             <div class="card-header bg-white py-3">
-                 <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#modalCrear">
+                <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#modalCrear">
                     <i class="bi bi-plus-lg"></i> Crear Registro
                 </button>
             </div>
-
 
             <div class="card-body">
                 <div class="table-responsive">
@@ -30,33 +29,53 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>Papa Blanca (Tomasa)</td>
-                                <td><em>Solanum tuberosum</em></td>
-                                <td>Andes Centrales</td>
-                                <td>Beige Claro</td>
-                                <td>Blanca</td>
-                                <td>Redonda</td>
-                                <td>
-                                    <button type="button" class="btn btn-outline-warning btn-sm" data-bs-toggle="modal" data-bs-target="#modalActualizar">
-                                        <i class="bi bi-pencil"></i> Actualizar
-                                    </button>
-                                    <button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#modalEliminar">
-                                        <i class="bi bi-trash"></i> Eliminar
-                                    </button>
-                                </td>
-                            </tr>
-                            </tbody>
+                            @if(isset($data) && count($data) > 0)
+                                @foreach ($data as $papa)
+                                    <tr>
+                                        <td>{{ $papa['id'] }}</td>
+                                        <td>{{ $papa['nombre_comun'] }}</td>
+                                        <td>{{ $papa['nombre_cientifico'] }}</td>
+                                        <td>{{ $papa['origen'] }}</td>
+                                        <td>{{ $papa['color_piel'] }}</td>
+                                        <td>{{ $papa['color_pulpa'] }}</td>
+                                        <td>{{ $papa['forma'] }}</td>
+                                        <td>
+                                            <button type="button" class="btn btn-outline-warning" 
+                                                    data-bs-toggle="modal"
+                                                    data-bs-target="#modalActualizar{{ $papa['id'] }}">
+                                                <i class="bi bi-pencil"></i> Actualizar
+                                            </button>
+
+                                            <button type="button" class="btn btn-outline-danger" 
+                                                    data-bs-toggle="modal"
+                                                    data-bs-target="#modalEliminar{{ $papa['id'] }}">
+                                                <i class="bi bi-trash"></i> Eliminar
+                                            </button>
+                                        </td>
+                                    </tr>
+
+                                    {{-- AQUÍ ESTÁ EL TRUCO: --}}
+                                    {{-- Incluimos los modales DENTRO del bucle para que se creen 
+                                         tantas veces como papas haya, cada uno con sus datos. --}}
+                                    
+                                    {{-- Pasamos la variable $papa al include --}}
+                                    @include('components.modals.actualizar_papa', ['papa' => $papa])
+                                    @include('components.modals.eliminar_papa', ['papa' => $papa])
+
+                                @endforeach
+                            @else
+                                <tr>
+                                    <td colspan="8" class="text-center">No hay papas registradas o falló la conexión :(</td>
+                                </tr>
+                            @endif
+                        </tbody>
                     </table>
                 </div>
             </div>
         </div>
     </div>
 
-    {{-- Modales --}}
+    {{-- El modal de CREAR sí va afuera, porque es uno solo para todos --}}
     @include('components.modals.crear_papa')
-    @include('components.modals.actualizar_papa')
-    @include('components.modals.eliminar_papa')
 
 @endsection

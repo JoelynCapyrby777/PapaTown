@@ -1,4 +1,4 @@
-<div class="modal fade" id="modalEliminar" tabindex="-1" aria-labelledby="modalEliminarLabel" aria-hidden="true">
+<div class="modal fade" id="modalEliminar{{ $papa['id'] }}" tabindex="-1" aria-labelledby="modalEliminarLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header bg-danger text-white">
@@ -11,7 +11,13 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-danger">Sí, Eliminar</button>
+
+                <form action="{{ route('crud.view.destroy', $papa['id']) }}" method="POST">
+                    @csrf
+                    @method('DELETE') 
+                    <button type="submit" class="btn btn-danger">Sí, Eliminar</button>
+                </form>
+
             </div>
         </div>
     </div>
